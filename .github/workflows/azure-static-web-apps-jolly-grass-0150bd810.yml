@@ -30,7 +30,9 @@ jobs:
       # 4. Build React Vite application
       - name: Build React application
         run: npm run build
-
+        # verify dist contents
+      - name: Verify dist contents
+        run:  echo "===== DIST =====" find dist -type f  echo "===== STATIC WEB APP CONFIG =====" cat dist/staticwebapp.config.json
       # 5. Deploy dist folder to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -44,3 +46,4 @@ jobs:
           output_location: "dist"
 
           skip_app_build: true
+
